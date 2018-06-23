@@ -20,12 +20,12 @@ public class ClearCommand {
     }
 
     public void clearCommand(String fullInput) throws WrongCommandFormatException {
-        String [] arrayFullInout = fullInput.trim().split(" ");
-        if(arrayFullInout.length < 2){
+        String[] arrayFullInout = fullInput.trim().split(" ");
+        if (arrayFullInout.length < 2) {
             throw new WrongCommandFormatException("Please enter correct add command like: clear 2017-04-25!!!");
         }
         LocalDate date = Parsers.dateParser(arrayFullInout[1]);
-        if(date == null){
+        if (date == null) {
             ConsoleMessagePrinters.errorPrinter("Wrong date input!!!");
         }
         dayExpensesService.delete(date);

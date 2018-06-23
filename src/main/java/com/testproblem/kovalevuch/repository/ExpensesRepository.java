@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 
 @Repository
 public interface ExpensesRepository extends JpaRepository<Expenses, Integer> {

@@ -1,8 +1,6 @@
 package com.testproblem.kovalevuch;
 
 import com.testproblem.kovalevuch.controllers.MainMenu;
-import com.testproblem.kovalevuch.service.DayExpensesService;
-import com.testproblem.kovalevuch.service.serviceImplementation.DayExpensesServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

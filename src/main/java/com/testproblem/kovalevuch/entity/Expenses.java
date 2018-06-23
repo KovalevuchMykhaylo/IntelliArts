@@ -1,6 +1,5 @@
 package com.testproblem.kovalevuch.entity;
 
-import com.sun.istack.internal.NotNull;
 import com.testproblem.kovalevuch.entity.abstractClasses.AbstractId;
 import com.testproblem.kovalevuch.enums.Pln;
 

@@ -30,7 +30,7 @@ public class AddCommand {
 
     public void createExpenses(String fullInput) throws WrongCommandFormatException {
         String[] arrayFullInout = fullInput.split(" ");
-        if(arrayFullInout.length < 4){
+        if (arrayFullInout.length < 4) {
             throw new WrongCommandFormatException("Please enter correct add command like: add 2017-04-25 12 USD Jogurt!!!");
         }
         LocalDate localDate = Parsers.dateParser(arrayFullInout[1]);
@@ -38,7 +38,7 @@ public class AddCommand {
         BigDecimal price = Parsers.priceParser(arrayFullInout[2]);
         Pln pln = Parsers.stringToPln(arrayFullInout[3]);
         String errors = errorsMessage(productName, price, pln);
-        if(errors != null){
+        if (errors != null) {
             ConsoleMessagePrinters.errorPrinter(errors);
             return;
         }
@@ -64,7 +64,7 @@ public class AddCommand {
     }
 
     private String errorsMessage(String productName, BigDecimal price, Pln pln) {
-        if(productName==null | price==null | pln==null) {
+        if (productName == null | price == null | pln == null) {
             StringBuffer sb = new StringBuffer();
             if (productName == null) sb.append("To long product name!!! ");
             if (price == null) sb.append("Wrong price format!!! ");

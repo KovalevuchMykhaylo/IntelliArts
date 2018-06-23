@@ -2,6 +2,7 @@ package com.testproblem.kovalevuch.entity;
 
 
 import com.testproblem.kovalevuch.entity.abstractClasses.AbstractId;
+import com.testproblem.kovalevuch.utils.DateConvector;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class DayExpenses extends AbstractId {
 
     @Column(columnDefinition = "TIMESTAMP")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Convert(converter = DateConvector.class)
     private LocalDate date;
 
     @OneToMany(mappedBy = "dayExpenses", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)

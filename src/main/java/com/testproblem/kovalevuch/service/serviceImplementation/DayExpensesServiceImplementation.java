@@ -38,7 +38,7 @@ public class DayExpensesServiceImplementation implements DayExpensesService {
     @Override
     public void delete(LocalDate localDate) {
         DayExpenses dayExpenses = dayExpensesRepository.findByDate(localDate);
-        if(dayExpenses!=null) {
+        if (dayExpenses != null) {
             dayExpensesRepository.delete(dayExpensesRepository.findByDate(localDate));
         } else {
             ConsoleMessagePrinters.successPrinter("You did not spend anything that day)))");
