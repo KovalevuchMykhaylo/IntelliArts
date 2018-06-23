@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class UrlSendGetRequset {
+public class UrlSendGetRequest {
 
     public static String createUrl(String link) {
         try {

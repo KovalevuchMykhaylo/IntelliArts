@@ -35,7 +35,7 @@ public class MainMenuServiceImplementation implements MainMenuService {
         try {
             addCommand.createExpenses(fullInput);
         } catch (WrongCommandFormatException e) {
-            System.out.println(e.getMessage());
+            ConsoleMessagePrinters.errorPrinter(e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class MainMenuServiceImplementation implements MainMenuService {
         try {
             clearCommand.clearCommand(fullInput);
         } catch (WrongCommandFormatException e) {
-            System.out.println(e.getMessage());
+            ConsoleMessagePrinters.errorPrinter(e.getMessage());
         }
     }
 

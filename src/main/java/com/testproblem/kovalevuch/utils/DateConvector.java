@@ -6,8 +6,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 @Converter(autoApply = true)
-public class DateConvector implements
-        AttributeConverter<LocalDate, Date> {
+public class DateConvector implements AttributeConverter<LocalDate, Date> {
+
     @Override
     public java.sql.Date convertToDatabaseColumn(LocalDate entityValue) {
         return java.sql.Date.valueOf(entityValue);
