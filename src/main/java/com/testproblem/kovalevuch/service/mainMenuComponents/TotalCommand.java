@@ -3,6 +3,7 @@ package com.testproblem.kovalevuch.service.mainMenuComponents;
 import com.testproblem.kovalevuch.constants.Constants;
 import com.testproblem.kovalevuch.entity.Expenses;
 import com.testproblem.kovalevuch.enums.Pln;
+import com.testproblem.kovalevuch.exceptions.ApiException;
 import com.testproblem.kovalevuch.service.ExpensesService;
 import com.testproblem.kovalevuch.utils.ConsoleMessagePrinters;
 import com.testproblem.kovalevuch.utils.Parsers;
@@ -25,10 +26,10 @@ public class TotalCommand {
         this.expensesService = expensesService;
     }
 
-    public void getTotalPrice(String fullInput) {
+    public void getTotalPrice(String fullInput) throws ApiException {
 
-        String [] parseInput = fullInput.trim().split(" ");
-        if(parseInput.length < 2){
+        String[] parseInput = fullInput.trim().split(" ");
+        if (parseInput.length < 2) {
             ConsoleMessagePrinters.errorPrinter("Wrong PLN input!!!");
         }
 
@@ -37,7 +38,11 @@ public class TotalCommand {
             ConsoleMessagePrinters.errorPrinter("Wrong PLN input!!!");
             return;
         }
-        jsonResponseParser(pln);
+        try {
+            jsonResponseParser(pln);
+        } catch (Exception e) {
+            throw new ApiException();
+        }
     }
 
     private void totalPrice(Pln pln, JSONObject rates) {

@@ -1,5 +1,6 @@
 package com.testproblem.kovalevuch.service.serviceImplementation;
 
+import com.testproblem.kovalevuch.exceptions.ApiException;
 import com.testproblem.kovalevuch.exceptions.WrongCommandFormatException;
 import com.testproblem.kovalevuch.service.DayExpensesService;
 import com.testproblem.kovalevuch.service.MainMenuService;
@@ -50,7 +51,11 @@ public class MainMenuServiceImplementation implements MainMenuService {
 
     @Override
     public void totalCommand(String fullInput) {
-        totalCommand.getTotalPrice(fullInput);
+        try {
+            totalCommand.getTotalPrice(fullInput);
+        }catch (ApiException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
