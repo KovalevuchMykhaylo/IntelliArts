@@ -52,6 +52,9 @@ public class MainMenu {
                 case WRONG_COMMAND:
                     ConsoleMessagePrinters.errorPrinter("Wrong command!!!");
                     break;
+                case HELP:
+                    HelpMenu.helpMenu();
+                    break;
             }
         }
     }

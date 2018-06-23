@@ -19,6 +19,5 @@ public interface ConsoleMessagePrinters {
             System.out.println(e.getDate());
             e.getProducts().forEach(System.out::println);
         });
-        System.out.println();
     }
 }

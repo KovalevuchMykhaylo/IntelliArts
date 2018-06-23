@@ -18,6 +18,7 @@ public final class Constants {
             "Enter 'list' to show all expense\n" +
             "Enter 'clear' removes all expenses for specified date. EXAMPLE: clear 2017-04-25\n" +
             "Enter 'total PLN' to show total amount of expenses. EXAMPLE total USD\n" +
+            "Enter 'total HELP' to show help\n" +
             "Enter 'exit' to exit app\033[0m\n";
 
     public static final class ApiConsts {
@@ -200,6 +201,14 @@ public final class Constants {
                 "ZAR\tSouth African Rand\n" +
                 "ZMK\tZambian Kwacha (pre-2013)\n" +
                 "ZMW\tZambian Kwacha\n" +
-                "ZWL\tZimbabwean Dollar";
+                "ZWL\tZimbabwean Dollar\n";
+
+        public static final String HELP = "Available main menu commands is:\n" +
+                "\tADD, LIST, CLEAR, TOTAL, EXIT, HELP\n" +
+                "\tDate format is yyyy-mm-dd, please be careful!!!\n" +
+                "\tProduct name must contains less then 254 characters\n" +
+                "\tPLN means currency\n" +
+                "\tAvailable help menu commands is:\n" +
+                "\tPLN, RETURN\n";
     }
 }

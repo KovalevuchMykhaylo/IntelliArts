@@ -37,7 +37,7 @@ public class AddCommand {
         String productName = productName(arrayFullInout[4]);
         BigDecimal price = Parsers.priceParser(arrayFullInout[2]);
         Pln pln = Parsers.stringToPln(arrayFullInout[3]);
-        String errors = errorsMessage(productName, price, pln);
+        String errors = errorsMessage(localDate, productName, price, pln);
         if (errors != null) {
             ConsoleMessagePrinters.errorPrinter(errors);
             return;
@@ -63,9 +63,10 @@ public class AddCommand {
         return name;
     }
 
-    private String errorsMessage(String productName, BigDecimal price, Pln pln) {
-        if (productName == null | price == null | pln == null) {
+    private String errorsMessage(LocalDate localDate, String productName, BigDecimal price, Pln pln) {
+        if (productName == null | price == null | pln == null | localDate == null) {
             StringBuffer sb = new StringBuffer();
+            if(localDate == null) sb.append("Wrong date format!!!");
             if (productName == null) sb.append("To long product name!!! ");
             if (price == null) sb.append("Wrong price format!!! ");
             if (pln == null) sb.append("Wrong pln!!!");

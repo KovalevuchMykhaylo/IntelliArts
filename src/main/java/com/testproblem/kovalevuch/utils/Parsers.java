@@ -1,6 +1,7 @@
 package com.testproblem.kovalevuch.utils;
 
 import com.testproblem.kovalevuch.constants.Constants;
+import com.testproblem.kovalevuch.enums.HelpMenuCommands;
 import com.testproblem.kovalevuch.enums.MainMenuCommands;
 import com.testproblem.kovalevuch.enums.Pln;
 
@@ -10,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 import static com.testproblem.kovalevuch.constants.Constants.DATE_REGX;
+import static com.testproblem.kovalevuch.enums.HelpMenuCommands.WRONG_HELP_COMMAND;
 import static com.testproblem.kovalevuch.enums.MainMenuCommands.WRONG_COMMAND;
 
 public interface Parsers {
@@ -61,5 +63,16 @@ public interface Parsers {
             return null;
         }
         return LocalDate.parse(date, formatter);
+    }
+
+    static HelpMenuCommands stringToHELPMenuCommands(String helpMenuCommands) {
+        if (helpMenuCommands != null) {
+            HelpMenuCommands[] enums = HelpMenuCommands.values();
+            for (HelpMenuCommands anEnum : enums)
+                if (anEnum.name().equalsIgnoreCase(helpMenuCommands)) {
+                    return anEnum;
+                }
+        }
+        return WRONG_HELP_COMMAND;
     }
 }
