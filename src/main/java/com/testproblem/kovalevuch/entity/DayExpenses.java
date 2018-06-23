@@ -19,7 +19,7 @@ public class DayExpenses extends AbstractId {
     @Convert(converter = DateConvector.class)
     private LocalDate date;
 
-    @OneToMany(mappedBy = "dayExpenses", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dayExpenses", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<Expenses> expenses = new ArrayList<>();
 
     public DayExpenses() {

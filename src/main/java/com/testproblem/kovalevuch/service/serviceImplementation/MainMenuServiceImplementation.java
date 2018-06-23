@@ -11,6 +11,8 @@ import com.testproblem.kovalevuch.utils.ConsoleMessagePrinters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class MainMenuServiceImplementation implements MainMenuService {
 
@@ -59,6 +61,7 @@ public class MainMenuServiceImplementation implements MainMenuService {
     }
 
     @Override
+    @Transactional
     public void listCommand() {
         ConsoleMessagePrinters.listPrinter(dayExpensesService.findAll());
     }
