@@ -30,14 +30,6 @@ public interface Parsers {
         return null;
     }
 
-    static void printer(List<DayExpenses> dayExpenses) {
-        dayExpenses.forEach(e -> {
-            System.out.println(e.getDate());
-            e.getProducts().forEach(System.out::println);
-        });
-        System.out.println();
-    }
-
     static Pln stringToPln(String pln) {
         if (pln != null) {
             Pln[] enums = Pln.values();

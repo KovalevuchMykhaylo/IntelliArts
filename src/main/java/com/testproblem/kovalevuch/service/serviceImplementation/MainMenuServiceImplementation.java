@@ -6,7 +6,7 @@ import com.testproblem.kovalevuch.service.MainMenuService;
 import com.testproblem.kovalevuch.service.mainMenuComponents.AddCommand;
 import com.testproblem.kovalevuch.service.mainMenuComponents.ClearCommand;
 import com.testproblem.kovalevuch.service.mainMenuComponents.TotalCommand;
-import com.testproblem.kovalevuch.utils.Parsers;
+import com.testproblem.kovalevuch.utils.ConsoleMessagePrinters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +55,6 @@ public class MainMenuServiceImplementation implements MainMenuService {
 
     @Override
     public void listCommand() {
-        Parsers.printer(dayExpensesService.findAll());
+        ConsoleMessagePrinters.listPrinter(dayExpensesService.findAll());
     }
 }

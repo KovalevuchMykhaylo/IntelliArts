@@ -1,13 +1,9 @@
 package com.testproblem.kovalevuch.controllers;
 
 import com.testproblem.kovalevuch.enums.MainMenuCommands;
-import com.testproblem.kovalevuch.service.DayExpensesService;
 import com.testproblem.kovalevuch.service.MainMenuService;
-import com.testproblem.kovalevuch.service.mainMenuComponents.AddCommand;
-import com.testproblem.kovalevuch.service.mainMenuComponents.ClearCommand;
 import com.testproblem.kovalevuch.utils.ConsoleMessagePrinters;
 import com.testproblem.kovalevuch.utils.Parsers;
-import com.testproblem.kovalevuch.service.mainMenuComponents.TotalCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -55,8 +51,6 @@ public class MainMenu {
                     return;
                 case WRONG_COMMAND:
                     ConsoleMessagePrinters.errorPrinter("Wrong command!!!");
-                    break;
-                default:
                     break;
             }
         }
