@@ -49,7 +49,7 @@ public interface Parsers {
         return null;
     }
 
-    static MainMenuCommands stringTomainMenuCommands(String mainMenuCommands) {
+    static MainMenuCommands stringToMainMenuCommands(String mainMenuCommands) {
         if (mainMenuCommands != null) {
             MainMenuCommands[] enums = MainMenuCommands.values();
             for (MainMenuCommands anEnum : enums)
@@ -61,7 +61,7 @@ public interface Parsers {
     }
 
     static MainMenuCommands commandParser(String input) {
-        return stringTomainMenuCommands(input);
+        return stringToMainMenuCommands(input);
     }
 
     static LocalDate dateParser(String date) {

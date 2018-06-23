@@ -24,9 +24,9 @@ public final class Constants {
 
         public static final String API_KEY = "6e7404fdb0cf293504341a4d7380a16d";
 
-        public static final String LATES_WITH_API_KEY_AND_BASE = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d&base=";
+        public static final String LATEST_WITH_API_KEY_AND_BASE = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d&base=";
 
-        public static final String LATES_WITH_API_KEY = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d";
+        public static final String LATEST_WITH_API_KEY = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d";
 
         public static final String API_SYMBOLS = "&symbols=GBP,JPY,EUR";
     }

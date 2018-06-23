@@ -56,47 +56,30 @@ public class TotalCommand {
             ":655.365544,\"XAG\":0.070867,\"XAU\":0.000918,\"XCD\":3.150908,\"XDR\":0.825687,\"XOF\":655.365544,\"XPF\"" +
             ":119.239203,\"YER\":291.186812,\"ZAR\":15.655564,\"ZMK\":10490.421132,\"ZMW\":11.643234,\"ZWL\":375.687516}}";
 
-    private String responce = "{" +
-            "\"success\"" + ": " + "true, " +
-            "\"timestamp\"" + ": " + 1519296206 + ", " +
-            "\"base\"" + ": " + "\"EUR\"" + "," +
-            "\"date\"" + ": " + "\"2018-06-21\"" + ", " +
-            "\"rates\"" + ": " + "{" +
-            "\"AUD\"" + ": " + 1.566015 + ", " +
-            "\"CAD\"" + ": " + 1.560132 + ", " +
-            "\"CHF\"" + ": " + 1.154727 + ", " +
-            "\"CNY\"" + ": " + 7.827874 + ", " +
-            "\"GBP\"" + ": " + 0.882047 + ", " +
-            "\"JPY\"" + ": " + 132.360679 + ", " +
-            "\"USD\"" + ": " + 1.23396  + "}" + "}";
-
     public void getTotalPrice(String fullInput){
         Pln pln = Parsers.stringToPln(fullInput.trim().split(" ")[1]);
         if(pln==null){
             ConsoleMessagePrinters.errorPrinter("Wrong PLN input!!!");
             return;
         }
-        jsonResponceParser(pln);
+        jsonResponseParser(pln);
     }
 
-    public void totalPrice(Pln pln, JSONObject rates){
+    private void totalPrice(Pln pln, JSONObject rates){
         List<Expenses> expenses = expensesService.findAll();
         BigDecimal total = new BigDecimal(0);
         for(Expenses e: expenses)
-            if(!e.getPln().equals(pln)){
-                total = total.add(e.getPrice().multiply(BigDecimal.valueOf((Double) rates.get(pln.name()))));
+            if(!e.getPln().equals(pln) && !e.getPln().equals(Pln.EUR)){
+                BigDecimal euroPrice = e.getPrice().multiply(BigDecimal.valueOf((Double) rates.get(pln.name())));
+                total = total.add(euroPrice.multiply(BigDecimal.valueOf((Double) rates.get(pln.name()))));
             }else {
                 total = total.add(e.getPrice());
             }
         ConsoleMessagePrinters.successPrinter(total.setScale(2, RoundingMode.CEILING).toString());
     }
 
-//    public void JsonResponceParser(Pln pln, String responce){
-    public void jsonResponceParser(Pln pln){
-        JSONObject jsonObjectMy = new JSONObject(fukingResponce);
-        System.out.println(jsonObjectMy);
-        JSONObject jsonObject = new JSONObject(UrlSendGetRequset.createUrl(Constants.ApiConsts.LATES_WITH_API_KEY_AND_BASE + pln.name() + Constants.ApiConsts.API_SYMBOLS));
-        System.out.println(jsonObject);
+    private void jsonResponseParser(Pln pln){
+        JSONObject jsonObject = new JSONObject(UrlSendGetRequset.createUrl(Constants.ApiConsts.LATEST_WITH_API_KEY));
         JSONObject object = new JSONObject(jsonObject.getJSONObject("rates").toString());
         totalPrice(pln, object);
     }
