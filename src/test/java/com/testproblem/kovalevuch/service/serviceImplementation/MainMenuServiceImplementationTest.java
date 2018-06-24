@@ -61,7 +61,7 @@ public class MainMenuServiceImplementationTest {
     @Test
     public void testListCommand() {
         when(dayExpensesService.findAll()).thenReturn(Collections.singletonList(new DayExpenses(LocalDate.of(2018, Month.JUNE, 23), Collections.singletonList(new Expenses("name", new BigDecimal(0), Pln.AED)))));
-
         mainMenuServiceImplementation.listCommand();
+        verify(dayExpensesService, times(1)).findAll();
     }
 }

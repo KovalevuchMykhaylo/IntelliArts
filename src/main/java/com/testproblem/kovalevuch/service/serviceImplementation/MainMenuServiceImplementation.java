@@ -70,6 +70,6 @@ public class MainMenuServiceImplementation implements MainMenuService {
             ConsoleMessagePrinters.successPrinter("You don't have any expenses yet!!!");
             return;
         }
-        ConsoleMessagePrinters.listPrinter(dayExpensesService.findAll());
+        ConsoleMessagePrinters.listPrinter(dayExpenses);
     }
 }
