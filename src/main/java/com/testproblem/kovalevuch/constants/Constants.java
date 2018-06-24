@@ -18,18 +18,13 @@ public final class Constants {
             "Enter 'list' to show all expense\n" +
             "Enter 'clear' removes all expenses for specified date. EXAMPLE: clear 2017-04-25\n" +
             "Enter 'total PLN' to show total amount of expenses. EXAMPLE total USD\n" +
-            "Enter 'total HELP' to show help\n" +
+            "Enter 'help' to show help\n" +
             "Enter 'exit' to exit app\033[0m\n";
 
     public static final class ApiConsts {
 
-        public static final String API_KEY = "6e7404fdb0cf293504341a4d7380a16d";
-
-        public static final String LATEST_WITH_API_KEY_AND_BASE = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d&base=";
-
         public static final String LATEST_WITH_API_KEY = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d";
 
-        public static final String API_SYMBOLS = "&symbols=GBP,JPY,EUR";
     }
 
     public static final class HelpMenu {
