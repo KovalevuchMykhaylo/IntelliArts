@@ -8,6 +8,7 @@ import com.testproblem.kovalevuch.service.ExpensesService;
 import com.testproblem.kovalevuch.utils.ConsoleMessagePrinters;
 import com.testproblem.kovalevuch.utils.Parsers;
 import com.testproblem.kovalevuch.utils.UrlSendGetRequest;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,7 +46,7 @@ public class TotalCommand {
         }
     }
 
-    private void totalPrice(Pln pln, JSONObject rates) {
+    private void totalPrice(Pln pln, JSONObject rates) throws JSONException{
         List<Expenses> expenses = expensesService.findAll();
         BigDecimal total = new BigDecimal(0);
         for (Expenses e : expenses)
@@ -58,7 +59,7 @@ public class TotalCommand {
         ConsoleMessagePrinters.successPrinter(total.setScale(2, RoundingMode.CEILING).toString());
     }
 
-    private void jsonResponseParser(Pln pln) {
+    private void jsonResponseParser(Pln pln) throws JSONException {
         JSONObject jsonObject = new JSONObject(UrlSendGetRequest.createUrl(Constants.ApiConsts.LATEST_WITH_API_KEY));
         JSONObject object = new JSONObject(jsonObject.getJSONObject("rates").toString());
         totalPrice(pln, object);
