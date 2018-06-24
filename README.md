@@ -7,6 +7,6 @@ For connect to data base app uses default password encoding. If You want to run 
 Application builds with Maven. 
 If You will be using Eclipse to run this app, Your need to install free plugin "ANSI Escape in Console" from eclipse marketplace to see colors in console.
 If You don't want to install the plugin, you will see extra symbols like "[31m" in Your console.
-For converting currency app uses https://fixer.io api, for correct api working you need api key. You can use my or get your own from https://fixer.io and replace it in Constants class.
+For converting currency app uses https://fixer.io api, for correct api working you need api key. You can use my or get your own from https://fixer.io and replace it in application.properties.
 
 Author Mykhailo Kovalevuch.

@@ -21,12 +21,6 @@ public final class Constants {
             "Enter 'help' to show help\n" +
             "Enter 'exit' to exit app\033[0m\n";
 
-    public static final class ApiConsts {
-
-        public static final String LATEST_WITH_API_KEY = "http://data.fixer.io/api/latest?access_key=6e7404fdb0cf293504341a4d7380a16d";
-
-    }
-
     public static final class HelpMenu {
 
         public static final String PLN_NAMES = "Code\tName\n" +

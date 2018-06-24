@@ -1,5 +1,6 @@
 package com.testproblem.kovalevuch.service.serviceImplementation;
 
+import com.testproblem.kovalevuch.entity.DayExpenses;
 import com.testproblem.kovalevuch.exceptions.ApiException;
 import com.testproblem.kovalevuch.exceptions.WrongCommandFormatException;
 import com.testproblem.kovalevuch.service.DayExpensesService;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class MainMenuServiceImplementation implements MainMenuService {
@@ -55,7 +57,7 @@ public class MainMenuServiceImplementation implements MainMenuService {
     public void totalCommand(String fullInput) {
         try {
             totalCommand.getTotalPrice(fullInput);
-        }catch (ApiException e){
+        } catch (ApiException | WrongCommandFormatException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -63,6 +65,11 @@ public class MainMenuServiceImplementation implements MainMenuService {
     @Override
     @Transactional
     public void listCommand() {
+        List<DayExpenses> dayExpenses = dayExpensesService.findAll();
+        if (dayExpenses.isEmpty()) {
+            ConsoleMessagePrinters.successPrinter("You don't have any expenses yet!!!");
+            return;
+        }
         ConsoleMessagePrinters.listPrinter(dayExpensesService.findAll());
     }
 }
