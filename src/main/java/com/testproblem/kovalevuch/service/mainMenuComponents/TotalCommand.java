@@ -61,7 +61,7 @@ public class TotalCommand {
             } else {
                 total = total.add(e.getPrice());
             }
-        ConsoleMessagePrinters.successPrinter(total.setScale(2, RoundingMode.CEILING).toString());
+        ConsoleMessagePrinters.successPrinter(total.setScale(2, RoundingMode.CEILING).toString() + " " + pln);
     }
 
     private void jsonResponseParser(Pln pln) throws JSONException {
