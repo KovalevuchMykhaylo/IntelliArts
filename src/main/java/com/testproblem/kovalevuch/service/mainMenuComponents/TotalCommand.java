@@ -35,12 +35,10 @@ public class TotalCommand {
     }
 
     public void getTotalPrice(String fullInput) throws ApiException, WrongCommandFormatException {
-
         String[] parseInput = fullInput.trim().split(" ");
         if (parseInput.length < 2) {
             throw new WrongCommandFormatException("Wrong PLN input!!!");
         }
-
         Pln pln = Parsers.stringToPln(fullInput.trim().split(" ")[1]);
         if (pln == null) {
             ConsoleMessagePrinters.errorPrinter("Wrong PLN input!!!");
@@ -56,9 +54,10 @@ public class TotalCommand {
     private void totalPrice(Pln pln, JSONObject rates, List<Expenses> expenses) throws JSONException {
         BigDecimal total = new BigDecimal(0);
         for (Expenses e : expenses)
-            if (!e.getPln().equals(pln) && !e.getPln().equals(Pln.EUR)) {
-                BigDecimal euroPrice = e.getPrice().multiply(BigDecimal.valueOf((Double) rates.get(pln.name())));
-                total = total.add(euroPrice.multiply(BigDecimal.valueOf((Double) rates.get(pln.name()))));
+            if (!e.getPln().equals(pln)) {
+                BigDecimal euroPrice = e.getPrice().divide(rates.getBigDecimal(e.getPln().name()), 4, RoundingMode.CEILING);
+                BigDecimal convertedPrice = euroPrice.multiply(rates.getBigDecimal(pln.name()));
+                total = total.add(convertedPrice);
             } else {
                 total = total.add(e.getPrice());
             }

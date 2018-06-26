@@ -30,7 +30,7 @@ public class AddCommand {
 
     public void createExpenses(String fullInput) throws WrongCommandFormatException {
         String[] arrayFullInout = fullInput.split(" ");
-        if (arrayFullInout.length < 4) {
+        if (arrayFullInout.length < 5) {
             throw new WrongCommandFormatException("Please enter correct add command like: add 2017-04-25 12 USD Jogurt!!!");
         }
         LocalDate localDate = Parsers.dateParser(arrayFullInout[1]);

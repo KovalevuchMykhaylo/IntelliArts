@@ -58,7 +58,7 @@ public class MainMenuServiceImplementation implements MainMenuService {
         try {
             totalCommand.getTotalPrice(fullInput);
         } catch (ApiException | WrongCommandFormatException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
