@@ -34,7 +34,7 @@ public class AddCommand {
             throw new WrongCommandFormatException("Please enter correct add command like: add 2017-04-25 12 USD Jogurt!!!");
         }
         LocalDate localDate = Parsers.dateParser(arrayFullInout[1]);
-        String productName = productName(arrayFullInout[4]);
+        String productName = productName(arrayFullInout);
         BigDecimal price = Parsers.priceParser(arrayFullInout[2]);
         Pln pln = Parsers.stringToPln(arrayFullInout[3]);
         String errors = errorsMessage(localDate, productName, price, pln);
@@ -56,17 +56,24 @@ public class AddCommand {
         }
     }
 
-    private String productName(String name) {
+    private String productName(String[] arrayFullInout) {
+        String name;
+        StringBuffer sb = new StringBuffer();
+        for (int i = 4; i < arrayFullInout.length; i++) {
+            sb.append(arrayFullInout[i]);
+            sb.append(" ");
+        }
+        name = sb.toString();
         if (name.length() > 254) {
             return null;
         }
-        return name;
+        return name.trim();
     }
 
     private String errorsMessage(LocalDate localDate, String productName, BigDecimal price, Pln pln) {
         if (productName == null | price == null | pln == null | localDate == null) {
             StringBuffer sb = new StringBuffer();
-            if(localDate == null) sb.append("Wrong date format!!!");
+            if (localDate == null) sb.append("Wrong date format!!!");
             if (productName == null) sb.append("To long product name!!! ");
             if (price == null) sb.append("Wrong price format!!! ");
             if (pln == null) sb.append("Wrong pln!!!");

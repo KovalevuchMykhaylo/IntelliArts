@@ -2,7 +2,7 @@ package com.testproblem.kovalevuch.constants;
 
 public final class Constants {
 
-    public static final String BIG_DECIMAL_WITH_DOT = "^([0-9]{1,17}\\\\.[0-9]{1,2})|([0-9]{1,17}\\\\,[0-9]{1,2})|([0-9]{1,17})$";
+    public static final String BIG_DECIMAL_WITH_DOT = "^([0-9]{1,17}\\.[0-9]{1,2})|([0-9]{1,17}\\,[0-9]{1,2})|([0-9]{1,17})$";
 
     public static final String BIG_DECIMAL_WITHOUT_DOT = "^([0-9]{1,17})$";
 

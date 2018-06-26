@@ -5,6 +5,7 @@ import com.testproblem.kovalevuch.enums.Pln;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Entity
 @Table(name = "expenses")
@@ -66,6 +67,6 @@ public class Expenses extends AbstractId {
 
     @Override
     public String toString() {
-        return "\033[34m" + name + " " + price + " " + pln + "\033[0m";
+        return "\033[34m" + name + " " + price.setScale(2, RoundingMode.HALF_UP).stripTrailingZeros() + " " + pln + "\033[0m";
     }
 }

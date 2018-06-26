@@ -23,8 +23,8 @@ public interface Parsers {
             }
             Pattern priceRegWithDecimal = Pattern.compile((Constants.BIG_DECIMAL_WITH_DOT));
             Pattern priceReg = Pattern.compile(Constants.BIG_DECIMAL_WITHOUT_DOT);
-            if (priceReg.matcher(price).matches() | priceRegWithDecimal.matcher(price).matches()) {
-                return new BigDecimal(price).setScale(2);
+            if (priceRegWithDecimal.matcher(price).matches() | priceReg.matcher(price).matches()) {
+                return new BigDecimal(price);
             }
         }
         return null;
